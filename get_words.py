@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+@author: madeleine
+"""
+import requests
+from bs4 import BeautifulSoup
+import string
+
 def get_words(url, min_len=3, max_len=30):
     """
     This function scrapes the text from a url and returns a list of words without punctuation.
@@ -75,3 +83,16 @@ def get_words(url, min_len=3, max_len=30):
             wordlist.append(word)
     
     return words, wordlist, all_words
+
+def get_stopwords(language, stopwords_en, stopwords_fr):
+    # set stopwords by language
+    if language == 'fr':
+        stopwords = stopwords_fr
+    elif language == 'en':
+        stopwords = stopwords_en
+    elif language == 'all':
+        stopwords = stopwords_fr.union(stopwords_en)
+    return stopwords
+
+if __name__ == "__main__":
+    pass
